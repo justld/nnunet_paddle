@@ -1,0 +1,71 @@
+_base_: '../_base_/global_configs.yml'
+
+batch_size: 1 # 无用,为了日志好计算，设置1
+iters: 20000
+
+model:
+  type: NNUNet
+  plans_path: /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl
+  stage: 1
+# num_classes: 无用
+
+train_dataset:
+  type: MSDDataset
+  plans_name: nnUNetPlansv2.1_plans_3D.pkl
+  dataset_directory: 0     # 不需要这个参数，以preprocessed_dir为准
+  output_folder: /home/aistudio/data/dataset_output
+  raw_data_dir: /home/aistudio/data/Task06_Lung
+  decathlon_dir: /home/aistudio/data/Task006_Lung
+  cropped_data_dir: /home/aistudio/data/cropped/Task006_Lung
+  preprocessed_dir: /home/aistudio/data/preprocessed/Task006_Lung
+  plan2d: False
+  plan3d: True
+  num_batches_per_epoch: 250
+  fold: 1
+  stage: 1
+  unpack_data: True
+  dataset_root: luna16_lobe51/luna16_lobe51_phase0
+  result_dir: luna16_lobe51/luna16_lobe51_phase1
+  mode: train
+
+val_dataset:
+  type: MSDDataset
+  plans_name: nnUNetPlansv2.1_plans_3D.pkl
+  output_folder: /home/aistudio/data/dataset_output
+  raw_data_dir: /home/aistudio/data/Task06_Lung
+  decathlon_dir: /home/aistudio/data/Task006_Lung
+  cropped_data_dir: /home/aistudio/data/cropped/Task006_Lung
+  preprocessed_dir: /home/aistudio/data/preprocessed/Task006_Lung
+  num_batches_per_epoch: 10
+  fold: 1
+  stage: 1
+  unpack_data: True
+  dataset_root: luna16_lobe51/luna16_lobe51_phase0
+  result_dir: luna16_lobe51/luna16_lobe51_phase1
+  mode: val
+
+
+optimizer:
+  type: sgd
+  momentum: 0.99     # 未使用动量动态调整策略
+  weight_decay: 0.00003
+  use_nesterov: True
+# 梯度裁剪放到优化器那里
+
+lr_scheduler:
+  type: PolynomialDecay
+  learning_rate: 0.01
+  end_lr: 0
+  power: 0.9
+
+loss:
+  types:
+    - type: MultipleLoss
+      plan_path: /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl
+      stage: 1
+      losses:
+        - type: DC_and_CE_loss
+          do_bg: False
+          batch_dice: True
+      coef: [1.0]
+  coef: [1]
