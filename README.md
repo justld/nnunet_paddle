@@ -128,6 +128,56 @@ python nnunet_tools/ensemble.py --nnunet_2d_val_dir ~/val_2d --nnunet_3d_cascade
     --gt_dir /home/aistudio/data/preprocessed/Task006_Lung/gt_segmentations
 ```
 
+### 第四步：动态图推理  
+首先修改权重路径，如下(五折共有5个文件夹)：   
+|-output  
+|--fold_0  
+|---model.pdparams  
+|--...  
+
+|配置|含义|
+|:---:|:---:|
+|input_folder(i)|待预测的文件夹路径|
+|output_folder(o)|保存的路径|
+|plan_path|配置文件路径|
+|model_dir|权重模型文件夹(上方示例的output目录)|
+|folds|验证的折数|
+|postprocessing_json|后处理的json路径，在上一步all_fold_eval.py输出的文件夹内|
+|lowres_segmentations|如果是cascade网络，则对应第一阶段输出的目录|
+|model_lowres_dir|如果是级联网络，对应第一阶段模型的目录|
+|model_lowres_postprocessing_json_path|第一阶段后处理的json路径|
+
+
+以级联第一阶段为例，进行预测，预测结果见下图(msd lung测试集008.ii.gz)：
+```
+python nnunet_tools/predict.py -i ~/data/Task006_Lung/imagesTs \
+    -o ~/nnunet_predict/predict_3d \
+    -plan_path /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl \
+    -model_dir ~/MedicalSeg/output/nnunet3d_stage0  -folds 5 \
+    -postprocessing_json_path ~/val_3d_stage0/postprocessing.json \
+```
+![test](images/dynamic_stage0_all_fold_008.png)
+
+### 第五步：导出
+以级联第一阶段为例，需要注意的是，请带上--without_argmax --with_softmax参数，模型输出为概率。
+```
+python export.py \
+       --config configs/msd/msd_lung_3d_fold_4.yml \
+       --model_path ~/MedicalSeg/output/nnunet3d_stage0/fold_0/model.pdparams \
+       --save_dir output --without_argmax --with_softmax
+```
+
+### 第六步：静态图预测
+以上一步导出的静态图模型进行预测，(暂时不支持第二阶段级联预测和多折预测)，预测结果见下图。
+```
+python nnunet_tools/nnunet_infer.py \
+    --config output/deploy.yaml \
+    --image_path ~/data/Task006_Lung/imagesTs/lung_008_0000.nii.gz \
+    --save_dir output/infer/ \
+    --plan_path /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl \
+    --stage 0
+```
+![static pred](images/static_stage0_fold0_008.png)
 
 ## 6 模型信息
 
