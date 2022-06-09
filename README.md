@@ -49,7 +49,8 @@ coming soon
     - PaddlePaddle == 2.2.2
 
 
-## 快速开始
+## 快速开始  
+开始前请先准备好数据，在对应的config目录中配置好你的文件路径。  
 
 ### 第一步：克隆本项目
 ```bash
@@ -178,6 +179,16 @@ python nnunet_tools/nnunet_infer.py \
     --stage 0
 ```
 ![static pred](images/static_stage0_fold0_008.png)
+
+### 第七步：tipc
+快速验证tipc，请参考命令（这里没有放效果图，因为训练20iter，全部预测都是背景）：   
+```
+bash test_tipc/test_train_inference_python.sh ./test_tipc/configs/nnunet/train_infer_python.txt 'lite_train_lite_infer'
+```
+注意事项：  
+1、test_tipc/configs/nnunet/train_infer_python.txt中的配置文件路径需要修改，测试数据的路径需要修改；
+
+
 
 ## 6 模型信息
 
