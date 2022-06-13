@@ -66,6 +66,7 @@ pip install -r requirements.txt
 
 
 ### 第二步：训练模型
+首先下载[数据集](https://aistudio.baidu.com/aistudio/datasetdetail/125872)，并且解压，将所有训练配置文件的路径配置修改为自己的文件路径（tipc的配置文件也要改）。
      
 nnunet_2d训练(5折验证，一共5个配置文件，自行更改)：
 ```bash
