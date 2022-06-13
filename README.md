@@ -185,6 +185,9 @@ python nnunet_tools/nnunet_infer.py \
 ```
 bash test_tipc/test_train_inference_python.sh ./test_tipc/configs/nnunet/train_infer_python.txt 'lite_train_lite_infer'
 ```
+
+说明：tipc总耗时约5分钟（需要提前预处理好数据集，否则tipc耗时2H以上，[tipc日志](test_tipc/tipc_log.txt)）
+
 注意事项：  
 1、test_tipc/configs/nnunet/train_infer_python.txt中的配置文件路径需要修改，测试数据的路径需要修改；
 

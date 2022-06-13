@@ -1,0 +1,447 @@
+/home/aistudio/MedicalSeg
+2022-06-13 19:21:34 [INFO]	
+------------Environment Information-------------
+platform: Linux-4.15.0-140-generic-x86_64-with-debian-stretch-sid
+Python: 3.7.4 (default, Aug 13 2019, 20:35:49) [GCC 7.3.0]
+Paddle compiled with cuda: True
+NVCC: Cuda compilation tools, release 10.1, V10.1.243
+cudnn: 7.6
+GPUs used: 1
+CUDA_VISIBLE_DEVICES: 0
+GPU: ['GPU 0: Tesla V100-SXM2-32GB']
+GCC: gcc (Ubuntu 7.5.0-3ubuntu1~16.04) 7.5.0
+PaddlePaddle: 2.2.2
+OpenCV: 4.1.1
+------------------------------------------------
+/home/aistudio/MedicalSeg/paddleseg3d/cvlibs/config.py:434: UserWarning: Warning: The data dir now is /home/aistudio/MedicalSeg/data/, you should change the data_root in the global.yml if this directory didn't have enough space
+  .format(absolute_data_dir))
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+W0613 19:21:41.270819  9028 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.2, Runtime API Version: 10.1
+W0613 19:21:41.270879  9028 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+net_numpool:  5
+2022-06-13 19:21:48 [INFO]	
+---------------Config Information---------------
+batch_size: 2
+data_root: data/
+iters: 20
+loss:
+  coef:
+  - 1
+  types:
+  - coef:
+    - 1.0
+    ignore_index: 255
+    losses:
+    - batch_dice: false
+      do_bg: false
+      type: DC_and_CE_loss
+    plan_path: /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl
+    stage: 0
+    type: MultipleLoss
+lr_scheduler:
+  end_lr: 0
+  learning_rate: 0.01
+  power: 0.9
+  type: PolynomialDecay
+model:
+  plans_path: /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl
+  stage: 0
+  type: NNUNet
+optimizer:
+  momentum: 0.99
+  type: sgd
+  use_nesterov: true
+  weight_decay: 3.0e-05
+train_dataset:
+  cropped_data_dir: /home/aistudio/data/cropped/Task006_Lung
+  dataset_directory: 0
+  dataset_root: luna16_lobe51/luna16_lobe51_phase0
+  decathlon_dir: /home/aistudio/data/Task006_Lung
+  fold: 0
+  mode: train
+  num_batches_per_epoch: 250
+  output_folder: /home/aistudio/data/dataset_output
+  plan2d: false
+  plan3d: true
+  plans_name: nnUNetPlansv2.1_plans_3D.pkl
+  preprocessed_dir: /home/aistudio/data/preprocessed/Task006_Lung
+  raw_data_dir: /home/aistudio/data/Task06_Lung
+  result_dir: luna16_lobe51/luna16_lobe51_phase1
+  stage: 0
+  type: MSDDataset
+  unpack_data: true
+val_dataset:
+  cropped_data_dir: /home/aistudio/data/cropped/Task006_Lung
+  dataset_root: luna16_lobe51/luna16_lobe51_phase0
+  decathlon_dir: /home/aistudio/data/Task006_Lung
+  fold: 0
+  mode: val
+  num_batches_per_epoch: 10
+  output_folder: /home/aistudio/data/dataset_output
+  plans_name: nnUNetPlansv2.1_plans_3D.pkl
+  preprocessed_dir: /home/aistudio/data/preprocessed/Task006_Lung
+  raw_data_dir: /home/aistudio/data/Task06_Lung
+  result_dir: luna16_lobe51/luna16_lobe51_phase1
+  stage: 0
+  type: MSDDataset
+  unpack_data: true
+------------------------------------------------
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+<class 'paddle.nn.layer.conv.Conv3D'>'s flops has been counted
+Cannot find suitable count function for <class 'paddle.nn.layer.norm.InstanceNorm3D'>. Treat it as zero FLOPs.
+<class 'paddle.nn.layer.activation.LeakyReLU'>'s flops has been counted
+Cannot find suitable count function for <class 'paddle.fluid.dygraph.container.LayerList'>. Treat it as zero FLOPs.
+<class 'paddle.nn.layer.conv.Conv3DTranspose'>'s flops has been counted
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/paddle/tensor/creation.py:130: DeprecationWarning: `np.object` is a deprecated alias for the builtin `object`. To silence this warning, use `object` by itself. Doing this will not modify any behavior and is safe. 
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  if data.dtype == np.object:
+Total Flops: 625152883200     Total Params: 30785184
+ Run successfully with command - nnunet - python3 train.py --config test_tipc/configs/nnunet/nnunet_3d_cascade_stage0.yml --save_interval 20 --seed 100  --num_workers 8    --save_dir=./test_tipc/output/nnunet/norm_gpus_0_autocast_null --iters=20     --batch_size=2     !  
+/home/aistudio/MedicalSeg/paddleseg3d/cvlibs/config.py:434: UserWarning: Warning: The data dir now is /home/aistudio/MedicalSeg/data/, you should change the data_root in the global.yml if this directory didn't have enough space
+  .format(absolute_data_dir))
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+W0613 19:23:54.512336  9254 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.2, Runtime API Version: 10.1
+W0613 19:23:54.512392  9254 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+net_numpool:  5
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: val, keys: ['lung_006' 'lung_010' 'lung_033' 'lung_034' 'lung_041' 'lung_042'
+ 'lung_046' 'lung_048' 'lung_059' 'lung_065' 'lung_066' 'lung_070'
+ 'lung_079']
+2022-06-13 19:23:56 [INFO]	
+---------------Config Information---------------
+batch_size: 1
+data_root: data/
+iters: 25000
+loss:
+  coef:
+  - 1
+  types:
+  - coef:
+    - 1.0
+    ignore_index: 255
+    losses:
+    - batch_dice: false
+      do_bg: false
+      type: DC_and_CE_loss
+    plan_path: /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl
+    stage: 0
+    type: MultipleLoss
+lr_scheduler:
+  end_lr: 0
+  learning_rate: 0.01
+  power: 0.9
+  type: PolynomialDecay
+model:
+  plans_path: /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl
+  stage: 0
+  type: NNUNet
+optimizer:
+  momentum: 0.99
+  type: sgd
+  use_nesterov: true
+  weight_decay: 3.0e-05
+train_dataset:
+  cropped_data_dir: /home/aistudio/data/cropped/Task006_Lung
+  dataset_directory: 0
+  dataset_root: luna16_lobe51/luna16_lobe51_phase0
+  decathlon_dir: /home/aistudio/data/Task006_Lung
+  fold: 0
+  mode: train
+  num_batches_per_epoch: 250
+  output_folder: /home/aistudio/data/dataset_output
+  plan2d: false
+  plan3d: true
+  plans_name: nnUNetPlansv2.1_plans_3D.pkl
+  preprocessed_dir: /home/aistudio/data/preprocessed/Task006_Lung
+  raw_data_dir: /home/aistudio/data/Task06_Lung
+  result_dir: luna16_lobe51/luna16_lobe51_phase1
+  stage: 0
+  type: MSDDataset
+  unpack_data: true
+val_dataset:
+  cropped_data_dir: /home/aistudio/data/cropped/Task006_Lung
+  dataset_root: luna16_lobe51/luna16_lobe51_phase0
+  decathlon_dir: /home/aistudio/data/Task006_Lung
+  fold: 0
+  mode: val
+  num_batches_per_epoch: 10
+  output_folder: /home/aistudio/data/dataset_output
+  plans_name: nnUNetPlansv2.1_plans_3D.pkl
+  preprocessed_dir: /home/aistudio/data/preprocessed/Task006_Lung
+  raw_data_dir: /home/aistudio/data/Task06_Lung
+  result_dir: luna16_lobe51/luna16_lobe51_phase1
+  stage: 0
+  type: MSDDataset
+  unpack_data: true
+------------------------------------------------
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+2022-06-13 19:24:07 [INFO]	Loading pretrained model from ./test_tipc/output/nnunet/norm_gpus_0_autocast_null/iter_20/model.pdparams
+2022-06-13 19:24:07 [INFO]	There are 98/98 variables loaded into NNUNet.
+2022-06-13 19:24:07 [INFO]	Loaded trained params of model successfully
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+start evaluating...
+val_save_folder/fold_0/validation_raw/lung_006.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_010.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_033.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_034.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_041.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_042.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_046.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_048.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_059.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_065.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_066.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_070.nii.gz already exists, skip.
+val_save_folder/fold_0/validation_raw/lung_079.nii.gz already exists, skip.
+/home/aistudio/MedicalSeg/nnunet_tools/evaluator.py:351: RuntimeWarning: Mean of empty slice
+  all_scores["mean"][label][score] = float(np.nanmean(all_scores["mean"][label][score]))
+Foreground vs background
+before: 0.0
+after:  0.0
+Only one class present, no need to do each class separately as this is covered in fg vs bg
+done
+for which classes:
+[]
+min_object_sizes
+None
+done
+copy gt from /home/aistudio/data/preprocessed/Task006_Lung/gt_segmentations to val_save_folder/gt_niftis.
+ Run successfully with command - nnunet - python3 nnunet_tools/nnunet_fold_val.py --config test_tipc/configs/nnunet/nnunet_3d_cascade_stage0.yml --num_workers 8 --model_path=./test_tipc/output/nnunet/norm_gpus_0_autocast_null/iter_20/model.pdparams    !  
+/home/aistudio/MedicalSeg/paddleseg3d/cvlibs/config.py:434: UserWarning: Warning: The data dir now is /home/aistudio/MedicalSeg/data/, you should change the data_root in the global.yml if this directory didn't have enough space
+  .format(absolute_data_dir))
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+W0613 19:25:02.953327  9424 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.2, Runtime API Version: 10.1
+W0613 19:25:02.957360  9424 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+found unpacked dataset.
+loading dataset
+loading all case properties
+dataset split over! dataset mode: train, keys: ['lung_001' 'lung_003' 'lung_004' 'lung_005' 'lung_009' 'lung_014'
+ 'lung_015' 'lung_016' 'lung_018' 'lung_020' 'lung_022' 'lung_023'
+ 'lung_025' 'lung_026' 'lung_027' 'lung_028' 'lung_029' 'lung_031'
+ 'lung_036' 'lung_037' 'lung_038' 'lung_043' 'lung_044' 'lung_045'
+ 'lung_047' 'lung_049' 'lung_051' 'lung_053' 'lung_054' 'lung_055'
+ 'lung_057' 'lung_058' 'lung_061' 'lung_062' 'lung_064' 'lung_069'
+ 'lung_071' 'lung_073' 'lung_074' 'lung_075' 'lung_078' 'lung_080'
+ 'lung_081' 'lung_083' 'lung_084' 'lung_086' 'lung_092' 'lung_093'
+ 'lung_095' 'lung_096']
+2022-06-13 19:25:08 [INFO]	Loaded trained params of model successfully.
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/paddle/fluid/layers/utils.py:77: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+  return (isinstance(seq, collections.Sequence) and
+2022-06-13 19:25:11 [INFO]	Model is saved in ./test_tipc/output/nnunet/norm_gpus_0_autocast_null.
+ Run successfully with command - nnunet - python3 export.py --config test_tipc/configs/nnunet/nnunet_3d_cascade_stage0.yml --without_argmax --with_softmax --model_path=./test_tipc/output/nnunet/norm_gpus_0_autocast_null/iter_20/model.pdparams --save_dir=./test_tipc/output/nnunet/norm_gpus_0_autocast_null!  
+------------args parse-----------------
+infer image list:  ['/home/aistudio/data/Task006_Lung/imagesTs/lung_008_0000.nii.gz']
+predictor======================
+--------------load plan over----------------------
+2022-06-13 19:25:15 [INFO]	Use GPU
+W0613 19:25:16.137565  9505 analysis_predictor.cc:795] The one-time configuration of analysis predictor failed, which may be due to native predictor called first and its configurations taken effect.
+--- Running analysis [ir_graph_build_pass]
+--- Running analysis [ir_graph_clean_pass]
+--- Running analysis [ir_analysis_pass]
+--- Running IR pass [is_test_pass]
+--- Running IR pass [simplify_with_basic_ops_pass]
+--- Running IR pass [conv_affine_channel_fuse_pass]
+--- Running IR pass [conv_eltwiseadd_affine_channel_fuse_pass]
+--- Running IR pass [conv_bn_fuse_pass]
+--- Running IR pass [conv_eltwiseadd_bn_fuse_pass]
+--- Running IR pass [embedding_eltwise_layernorm_fuse_pass]
+--- Running IR pass [multihead_matmul_fuse_pass_v2]
+--- Running IR pass [squeeze2_matmul_fuse_pass]
+--- Running IR pass [reshape2_matmul_fuse_pass]
+--- Running IR pass [flatten2_matmul_fuse_pass]
+--- Running IR pass [map_matmul_v2_to_mul_pass]
+--- Running IR pass [map_matmul_v2_to_matmul_pass]
+--- Running IR pass [map_matmul_to_mul_pass]
+--- Running IR pass [fc_fuse_pass]
+--- Running IR pass [fc_elementwise_layernorm_fuse_pass]
+--- Running IR pass [conv_elementwise_add_act_fuse_pass]
+--- Running IR pass [conv_elementwise_add2_act_fuse_pass]
+--- Running IR pass [conv_elementwise_add_fuse_pass]
+--- Running IR pass [transpose_flatten_concat_fuse_pass]
+--- Running IR pass [runtime_context_cache_pass]
+--- Running analysis [ir_params_sync_among_devices_pass]
+I0613 19:25:16.313962  9505 ir_params_sync_among_devices_pass.cc:45] Sync params from CPU to GPU
+--- Running analysis [adjust_cudnn_workspace_size_pass]
+--- Running analysis [inference_op_replace_pass]
+--- Running analysis [memory_optimize_pass]
+I0613 19:25:16.395953  9505 memory_optimize_pass.cc:216] Cluster name : x  size: 4
+I0613 19:25:16.395985  9505 memory_optimize_pass.cc:216] Cluster name : leaky_relu_1.tmp_0  size: 128
+I0613 19:25:16.395989  9505 memory_optimize_pass.cc:216] Cluster name : leaky_relu_5.tmp_0  size: 512
+I0613 19:25:16.395992  9505 memory_optimize_pass.cc:216] Cluster name : conv3d_transpose_5.tmp_0  size: 1280
+I0613 19:25:16.395996  9505 memory_optimize_pass.cc:216] Cluster name : leaky_relu_7.tmp_0  size: 1024
+I0613 19:25:16.395999  9505 memory_optimize_pass.cc:216] Cluster name : concat_0.tmp_0  size: 2560
+I0613 19:25:16.396003  9505 memory_optimize_pass.cc:216] Cluster name : instance_norm_11.tmp_1  size: 4
+I0613 19:25:16.396006  9505 memory_optimize_pass.cc:216] Cluster name : leaky_relu_3.tmp_0  size: 256
+I0613 19:25:16.396009  9505 memory_optimize_pass.cc:216] Cluster name : leaky_relu_9.tmp_0  size: 1280
+I0613 19:25:16.396013  9505 memory_optimize_pass.cc:216] Cluster name : conv3d_37.tmp_1  size: 1280
+--- Running analysis [ir_graph_to_program_pass]
+I0613 19:25:16.436733  9505 analysis_predictor.cc:714] ======= optimize end =======
+I0613 19:25:16.439801  9505 naive_executor.cc:98] ---  skip [feed], feed -> x
+I0613 19:25:16.441469  9505 naive_executor.cc:98] ---  skip [softmax_1.tmp_0], fetch -> fetch
+W0613 19:25:34.054422  9505 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.2, Runtime API Version: 10.1
+W0613 19:25:34.058297  9505 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([1.5 , 0.75, 0.75]), 'spacing_transposed': array([1.5 , 0.75, 0.75]), 'data.shape (data is transposed)': (1, 199, 512, 512)} 
+after:  {'spacing': array([2.35358718, 1.48430795, 1.48430795]), 'data.shape (data is resampled)': (1, 127, 259, 259)} 
+
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 127, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 47], [0, 67], [0, 50, 99]]
+number of tiles: 18
+computing Gaussian
+done
+initializing result array (on GPU)
+initializing result_numsamples (on GPU)
+copying results to CPU
+prediction done
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+sitk save:  ./output/lung_008_0000.nii.nii.gz
+2022-06-13 19:26:18 [INFO]	Finish
+infer over!
+ Run successfully with command - nnunet - python3 nnunet_tools/nnunet_infer.py --stage 0 --plan_path /home/aistudio/data/preprocessed/Task006_Lung/nnUNetPlansv2.1_plans_3D.pkl --with_argmax False --device=gpu --use_trt=False --precision=fp32 --config=./test_tipc/output/nnunet/norm_gpus_0_autocast_null//deploy.yaml --batch_size=1 --image_path=/home/aistudio/data/Task006_Lung/imagesTs/lung_008_0000.nii.gz --benchmark=False   > ./test_tipc/output/nnunet/python_infer_gpu_usetrt_False_precision_fp32_batchsize_1.log 2>&1 !  
