@@ -106,6 +106,23 @@ python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_2d_fold_4.y
 python nnunet_tools/all_fold_eval.py --gt_dir ~/val_2d/gt_niftis --val_dir ~/val_2d
 
 ```
+nnunet_3d_cascade stage1验证(第二阶段运行前必须运行此步骤)：  
+```bash
+
+python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_0.yml --model_path output/nnunet3d_stage0/fold_0/iter_25000/model.pdparams --precision fp16 --save_dir ~/val_3d --val_save_folder ~/val_3d --predict_next_stage  
+  
+python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_1.yml --model_path output/nnunet3d_stage0/fold_1/iter_25000/model.pdparams --precision fp16 --save_dir ~/val_3d --val_save_folder ~/val_3d --predict_next_stage  
+
+
+python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_2.yml --model_path output/nnunet3d_stage0/fold_2/iter_25000/model.pdparams --precision fp16 --save_dir ~/val_3d --val_save_folder ~/val_3d --predict_next_stage   
+
+python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_3.yml --model_path output/nnunet3d_stage0/fold_3/iter_25000/model.pdparams --precision fp16 --save_dir ~/val_3d --val_save_folder ~/val_3d --predict_next_stage   
+
+python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_4.yml --model_path output/nnunet3d_stage0/fold_4/iter_25000/model.pdparams --precision fp16 --save_dir ~/val_3d --val_save_folder ~/val_3d --predict_next_stage    
+
+
+```
+
 
 nnunet_3d_cascade stage2 验证（val_save_folder为验证集预测结果保存目录，5折依次更改权重和配置文件）：
 ```bash
