@@ -29,12 +29,10 @@ coming soon
 | nnUNet_2d | True | 5 | 25k/30k  |Adam| -  |     -     |MSD LUNG|32G|1| 53.549% | - | - | - |
 | nnUNet_cascade_stage1 | False | 5 | 25k  |Adam| -  |     -     |MSD LUNG|32G|1| 67.676% | - | - | - |
 | nnUNet_cascade_stage1 | True | 5 | 25k  |Adam| -  |     -     |MSD LUNG|32G|1| 68.281% | - | - | - |
-| nnUNet_cascade_stage2 | False | 5 | 20k  |Adam| -  |     -     |MSD LUNG|32G|1| 59.953% | - | - | - |
-| nnUNet_cascade_stage2 | True | 5 | 20k  |Adam| -  |     -     |MSD LUNG|32G|1| 67.764% | - | - | - |
-| nnUNet_cascade_stage2 | False | 5 | 20k  |Adam| -  |     -     |MSD LUNG|32G|1| 59.953% | - | - | - |
-| nnUNet_cascade_stage2 | True | 5 | 20k  |Adam| -  |     -     |MSD LUNG|32G|1| 67.764% | - | - | - |
-| ensemble_2d_3d_cascade | False | 5 | -  |-| -  |     -     |MSD LUNG|32G|1| 61.716% | - | - | - |
-| ensemble_2d_3d_cascade | True | 5 | -  |-| -  |     -     |MSD LUNG|32G|1| 62.171% | - | - | - |
+| nnUNet_cascade_stage2 | False | 5 | 20k  |Adam| -  |     -     |MSD LUNG|32G|1| 59.894% | - | - | - |
+| nnUNet_cascade_stage2 | True | 5 | 20k  |Adam| -  |     -     |MSD LUNG|32G|1| 67.996% | - | - | - |
+| ensemble_2d_3d_cascade | False | 5 | -  |-| -  |     -     |MSD LUNG|32G|1| 62.635% | - | - | - |
+| ensemble_2d_3d_cascade | True | 5 | -  |-| -  |     -     |MSD LUNG|32G|1| 64.355% | - | - | - |
 
 
 
@@ -128,7 +126,7 @@ nnunet_3d_cascade stage2 验证（val_save_folder为验证集预测结果保存�
 ```bash
 python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_0_stage1.yml --model_path output/nnunet3d_stage1/fold_0/iter_16000/model.pdparams --precision fp16 --save_dir ~/val_3d_stage1 --val_save_folder ~/val_3d_stage1
 
-python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_1_stage1.yml --model_path output/nnunet3d_stage1/fold_1/iter_20000/model.pdparams --precision fp16 --save_dir ~/val_3d_stage1 --val_save_folder ~/val_3d_stage1
+python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_1_stage1.yml --model_path output/nnunet3d_stage1/fold_1/iter_19000/model.pdparams --precision fp16 --save_dir ~/val_3d_stage1 --val_save_folder ~/val_3d_stage1
 
 python nnunet_tools/nnunet_fold_val.py --config configs/msd/msd_lung_3d_fold_2_stage1.yml --model_path output/nnunet3d_stage1/fold_2/iter_20000/model.pdparams --precision fp16 --save_dir ~/val_3d_stage1 --val_save_folder ~/val_3d_stage1
 
