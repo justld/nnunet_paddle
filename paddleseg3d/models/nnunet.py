@@ -37,8 +37,8 @@ class NNUNet(nn.Layer):
         super().__init__()
         self.plans_path = plans_path
         self.stage = stage
-        plans = self.load_plans_file(plans_path)
-        self.process_plans(plans)
+        self.plans = self.load_plans_file(plans_path)
+        self.process_plans(self.plans)
 
         if self.threeD:
             conv_op = nn.Conv3D
@@ -101,8 +101,8 @@ class NNUNet(nn.Layer):
             self.net_conv_kernel_sizes = stage_plans['conv_kernel_sizes']
 
         # self.pad_all_sides = None  # self.patch_size
-        # self.intensity_properties = plans['dataset_properties']['intensityproperties']
-        # self.normalization_schemes = plans['normalization_schemes']
+        self.intensity_properties = plans['dataset_properties']['intensityproperties']
+        self.normalization_schemes = plans['normalization_schemes']
         self.base_num_features = plans['base_num_features']
         self.num_input_channels = plans['num_modalities']
         self.num_classes = plans['num_classes'] + 1  # background is no longer in num_classes
@@ -111,19 +111,19 @@ class NNUNet(nn.Layer):
         
         
         self.classes = plans['all_classes']
-        # self.use_mask_for_norm = plans['use_mask_for_norm']
+        self.use_mask_for_norm = plans['use_mask_for_norm']
         # self.only_keep_largest_connected_component = plans['keep_only_largest_region']
         # self.min_region_size_per_class = plans['min_region_size_per_class']
         # self.min_size_per_class = None  # DONT USE THIS. plans['min_size_per_class']
 
-        # if plans.get('transpose_forward') is None or plans.get('transpose_backward') is None:
-        #     print("WARNING! You seem to have data that was preprocessed with a previous version of nnU-Net. "
-        #           "You should rerun preprocessing. We will proceed and assume that both transpose_foward "
-        #           "and transpose_backward are [0, 1, 2]. If that is not correct then weird things will happen!")
-        #     plans['transpose_forward'] = [0, 1, 2]
-        #     plans['transpose_backward'] = [0, 1, 2]
-        # self.transpose_forward = plans['transpose_forward']
-        # self.transpose_backward = plans['transpose_backward']
+        if plans.get('transpose_forward') is None or plans.get('transpose_backward') is None:
+            print("WARNING! You seem to have data that was preprocessed with a previous version of nnU-Net. "
+                  "You should rerun preprocessing. We will proceed and assume that both transpose_foward "
+                  "and transpose_backward are [0, 1, 2]. If that is not correct then weird things will happen!")
+            plans['transpose_forward'] = [0, 1, 2]
+            plans['transpose_backward'] = [0, 1, 2]
+        self.transpose_forward = plans['transpose_forward']
+        self.transpose_backward = plans['transpose_backward']
 
         if len(self.patch_size) == 2:
             self.threeD = False
